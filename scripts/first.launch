@@ -1,0 +1,14 @@
+<launch>
+  <group ns="my_ns">
+  <arg name="rename" default="chatter" />
+    <node name="sender" pkg="rospy_tutorials" type="listener.py" output="screen">
+     <remap from="chatter" to="$(arg rename)"/>
+    </node>
+  <include file="$(find super_victor_study_pkg)/scripts/another.launch" >
+    <arg name="newtopic" value="$(arg rename)" />
+  </include>
+    <node name="receiver" pkg="rospy_tutorials" type="talker.py" output="screen">
+      <remap from="chatter" to="$(arg rename)"/>
+    </node>
+ </group>
+</launch>

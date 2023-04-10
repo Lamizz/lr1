@@ -1,0 +1,10 @@
+<launch>
+  <group ns='new_ns'>
+   <node name='polynomial' pkg='super_victor_study_pkg' type='polynomial.py' output='screen'/>
+   <node name='summing' pkg='super_victor_study_pkg' type='summing.py' output='screen'/>
+  </group>
+   <node name='request' pkg='super_victor_study_pkg' type='request.py' output='screen' >
+    <remap from='request_polynomial' to='new_ns/request_polynomial' />
+    <remap from='summing_request' to='new_ns/summing_requrst' />
+  </node>
+</launch>
